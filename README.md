@@ -36,7 +36,7 @@ int main()
 template <typename Function>
 auto fix(Function&& function)
 {
-	return curry(function)(function);
+    return curry(function)(function);
 }
 
 int main()
