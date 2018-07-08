@@ -1,5 +1,5 @@
 ## Currying & Partial Application in C++17
-```cpp
+```cpp:cpp
 template <typename Function>
 auto curry(Function&& function)
 {
@@ -32,7 +32,7 @@ int main()
 ```
 
 # Fixed Point Combinator for anonymous recursive function
-```cpp
+```cpp:cpp
 // fixed point combinator for anonymous recursive function
 template <typename Function>
 auto fix(Function&& function)
@@ -53,7 +53,7 @@ int main()
 ```
 
 # "for_each" for tuple
-```cpp
+```cpp:cpp
 // Apply a function to each element of a tuple.
 template <typename Tuple, typename Function, std::size_t... Indices>
 constexpr auto forEachImpl(Tuple&& tuple, Function&& function, std::index_sequence<Indices...>)
@@ -90,7 +90,7 @@ int main()
 ```
 
 # "stream" for tuple
-```cpp
+```cpp:cpp
 template <typename... Types>
 decltype(auto) operator>>(std::istream& is, std::tuple<Types...>& tuple)
 {
