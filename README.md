@@ -1,6 +1,6 @@
 # Currying & Partial Application in C++17
 
-'''cpp
+'''c++
 template <typename Function>
 auto curry(Function&& function)
 {
