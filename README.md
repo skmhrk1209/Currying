@@ -1,4 +1,4 @@
-# Currying & Partial Application in C++17
+## Currying & Partial Application in C++17
 ```cpp
 template <typename Function>
 auto curry(Function&& function)
@@ -27,6 +27,9 @@ int main()
     return 0;
 }
 ```
+```shell-session
+3
+```
 
 # Fixed Point Combinator for anonymous recursive function
 ```cpp
@@ -44,6 +47,9 @@ int main()
 
     return 0;
 }
+```
+```shell-session
+3628800
 ```
 
 # "for_each" for tuple
@@ -71,11 +77,16 @@ int main()
 {
     // print tuple!
     std::cout << "( ";
+
     forEach(std::forward_as_tuple(0, 0.0, "zero"), [](const auto& elem) { std::cout << elem << " "; });
+
     std::cout << ")" << std::endl;
 
     return 0;
 }
+```
+```shell-session
+( 0 0 zero )
 ```
 
 # "stream" for tuple
@@ -107,5 +118,8 @@ int main()
 
     return 0;
 }
+```
+```shell-session
+( 0 0 zero )
 ```
 
