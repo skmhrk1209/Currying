@@ -33,7 +33,6 @@ int main()
 
 ## Fixed Point Combinator for anonymous recursive function
 ```cpp
-// fixed point combinator for anonymous recursive function
 template <typename Function>
 auto fix(Function&& function)
 {
