@@ -27,7 +27,7 @@ int main()
     return 0;
 }
 ```
-```shell-session
+```shell-session:shell-session
 3
 ```
 
@@ -48,7 +48,7 @@ int main()
     return 0;
 }
 ```
-```shell-session
+```shell-session:shell-session
 3628800
 ```
 
@@ -85,7 +85,7 @@ int main()
     return 0;
 }
 ```
-```shell-session
+```shell-session:shell-session
 ( 0 0 zero )
 ```
 
@@ -119,7 +119,7 @@ int main()
     return 0;
 }
 ```
-```shell-session
+```shell-session:shell-session
 ( 0 0 zero )
 ```
 
