@@ -31,7 +31,7 @@ int main()
 3
 ```
 
-# Fixed Point Combinator for anonymous recursive function
+## Fixed Point Combinator for anonymous recursive function
 ```cpp
 // fixed point combinator for anonymous recursive function
 template <typename Function>
@@ -52,7 +52,7 @@ int main()
 3628800
 ```
 
-# "for_each" for tuple
+## "for_each" for tuple
 ```cpp
 // Apply a function to each element of a tuple.
 template <typename Tuple, typename Function, std::size_t... Indices>
@@ -89,7 +89,7 @@ int main()
 ( 0 0 zero )
 ```
 
-# "stream" for tuple
+## "stream" for tuple
 ```cpp
 template <typename... Types>
 decltype(auto) operator>>(std::istream& is, std::tuple<Types...>& tuple)
