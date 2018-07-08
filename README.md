@@ -3,20 +3,20 @@
 template <typename Function>
 auto curry(Function&& function)
 {
-	return [=](auto&&... args1)
-	{
-		if constexpr (std::is_invocable<decltype(function), decltype(args1)...>::value)
+    return [=](auto&&... args1)
+    {
+        if constexpr (std::is_invocable<decltype(function), decltype(args1)...>::value)
+        {
+            return function(std::forward<decltype(args1)>(args1)...);
+        }
+	    else
 		{
-			return function(std::forward<decltype(args1)>(args1)...);
-		}
-		else
-		{
-			return curry([=](auto&&... args2) -> decltype(function(args1..., std::forward<decltype(args2)>(args2)...))
-			{
-				return function(args1..., std::forward<decltype(args2)>(args2)...);
-			});
-		}
-	};
+            return curry([=](auto&&... args2) -> decltype(function(args1..., std::forward<decltype(args2)>(args2)...))
+            {
+                return function(args1..., std::forward<decltype(args2)>(args2)...);
+	        });
+	    }
+    };
 }
 
 int main()
@@ -57,19 +57,19 @@ int main()
 template <typename Tuple, typename Function, std::size_t... Indices>
 constexpr auto forEachImpl(Tuple&& tuple, Function&& function, std::index_sequence<Indices...>)
 {
-	// Don't unpack in function parameters because it's not guaranteed each parameter is evaluated from left to right.
-	// [](auto&&...) {}((function(std::get<Indices>(std::forward<Tuple>(tuple))), 0)...);
+    // Don't unpack in function parameters because it's not guaranteed each parameter is evaluated from left to right.
+    // [](auto&&...) {}((function(std::get<Indices>(std::forward<Tuple>(tuple))), 0)...);
 
-	// So, unpack in initializer list.
-	static_cast<void>(std::initializer_list<int>{ (function(std::get<Indices>(std::forward<Tuple>(tuple))), 0)... });
+    // So, unpack in initializer list.
+    static_cast<void>(std::initializer_list<int>{ (function(std::get<Indices>(std::forward<Tuple>(tuple))), 0)... });
 }
 
 // Apply a function to each element of a tuple.
 template <typename Tuple, typename Function>
 constexpr auto forEach(Tuple&& tuple, Function&& function)
 {
-	constexpr std::size_t Size(std::tuple_size<typename std::remove_reference<Tuple>::type>::value);
-	forEachImpl(std::forward<Tuple>(tuple), std::forward<Function>(function), std::make_index_sequence<Size>());
+    constexpr std::size_t Size(std::tuple_size<typename std::remove_reference<Tuple>::type>::value);
+    forEachImpl(std::forward<Tuple>(tuple), std::forward<Function>(function), std::make_index_sequence<Size>());
 }
 
 int main()
@@ -93,19 +93,19 @@ int main()
 template <typename... Types>
 decltype(auto) operator>>(std::istream& is, std::tuple<Types...>& tuple)
 {
-	forEach(tuple, [&is](auto& element) { is >> element; });
+    forEach(tuple, [&is](auto& element) { is >> element; });
 
-	return is;
+    return is;
 }
 
 template <typename... Types>
 decltype(auto) operator<<(std::ostream& os, const std::tuple<Types...>& tuple)
 {
-	os << "( ";
+    os << "( ";
 
-	forEach(tuple, [&os](const auto& element) { os << element << " "; });
+    forEach(tuple, [&os](const auto& element) { os << element << " "; });
 
-	os << ")";
+    os << ")";
 
 	return os;
 }
