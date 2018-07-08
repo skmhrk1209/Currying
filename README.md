@@ -9,13 +9,13 @@ auto curry(Function&& function)
         {
             return function(std::forward<decltype(args1)>(args1)...);
         }
-	    else
-		{
+        else
+        {
             return curry([=](auto&&... args2) -> decltype(function(args1..., std::forward<decltype(args2)>(args2)...))
             {
                 return function(args1..., std::forward<decltype(args2)>(args2)...);
-	        });
-	    }
+            });
+        }
     };
 }
 
@@ -107,7 +107,7 @@ decltype(auto) operator<<(std::ostream& os, const std::tuple<Types...>& tuple)
 
     os << ")";
 
-	return os;
+    return os;
 }
 
 int main()
