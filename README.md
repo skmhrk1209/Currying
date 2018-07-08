@@ -1,7 +1,7 @@
 ## Currying & Partial Application in C++17
 ```cpp
 template <typename Function>
-auto curry(Function&& function)
+constexpr auto curry(Function&& function)
 {
     return [=](auto&&... args1)
     {
@@ -34,7 +34,7 @@ int main()
 ## Fixed Point Combinator for anonymous recursive function
 ```cpp
 template <typename Function>
-auto fix(Function&& function)
+constexpr auto fix(Function&& function)
 {
     return curry(function)(function);
 }
