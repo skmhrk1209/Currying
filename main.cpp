@@ -13,7 +13,7 @@ int main()
     // print tuple!
     std::cout << "( ";
 
-    forEach(std::forward_as_tuple(0, 0.0, "zero"), [](const auto& elem) { std::cout << elem << " "; });
+    forEach(std::forward_as_tuple(0, 0.0, "zero"), [](const auto& element) { std::cout << element << " "; });
 
     std::cout << ")" << std::endl;
 
