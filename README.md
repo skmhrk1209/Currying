@@ -88,7 +88,7 @@ int main()
 ( 0 0 zero )
 ```
 
-## "stream" for tuple
+## "iostream" for tuple
 ```cpp
 template <typename... Types>
 decltype(auto) operator>>(std::istream& is, std::tuple<Types...>& tuple)
